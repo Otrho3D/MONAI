@@ -150,6 +150,29 @@ WSIReader
 .. autoclass:: WSIReader
   :members:
 
+Image writer
+------------
+
+FolderLayout
+~~~~~~~~~~~~
+.. autoclass:: FolderLayout
+  :members:
+
+ImageWriter
+~~~~~~~~~~~
+.. autoclass:: ImageWriter
+  :members:
+
+ITKWriter
+~~~~~~~~~
+.. autoclass:: ITKWriter
+  :members:
+
+NibabelWriter
+~~~~~~~~~~~~~
+.. autoclass:: NibabelWriter
+  :members:
+
 Nifti format handling
 ---------------------
 
