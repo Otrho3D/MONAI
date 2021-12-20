@@ -12,7 +12,6 @@
 import os
 import tempfile
 import unittest
-from pathlib import Path
 
 import itk
 import nibabel as nib
@@ -20,7 +19,6 @@ import numpy as np
 import torch
 
 from monai.data import ITKWriter
-from monai.transforms import LoadImage
 
 
 class TestITKWriter(unittest.TestCase):
@@ -36,16 +34,6 @@ class TestITKWriter(unittest.TestCase):
                 s = [1, 2, 3, 4]
                 s.pop(c)
                 np.testing.assert_allclose(itk.size(itk_obj), s)
-
-    def test_round_trip_nii(self):
-        data_path = "./MarsAtlas-MNI-Colin27/colin27_MNI_out.nii.gz"
-        nib_obj = nib.load(data_path)
-        itk_obj = ITKWriter.data_obj(
-            nib_obj.get_fdata(), {"affine": nib_obj.affine}, channel_dim=None, output_dtype=np.uint8
-        )
-        itk.imwrite(itk_obj, "testing.nii")
-        repro = nib.load("testing.nii")
-        np.testing.assert_allclose(repro.affine, nib_obj.affine)
 
 
 if __name__ == "__main__":
